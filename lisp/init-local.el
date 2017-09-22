@@ -81,6 +81,7 @@
 (setq erlang-compile-extra-opts
       (list '(i . "include")
             'export_all
+            (cons 'i "include")
             (cons 'i "deps/p1_xml/include")
             (cons 'i "deps/im_libs/apps/msync_proto/include")
             (cons 'i "deps/im_libs/apps/message_store/include")
@@ -91,24 +92,6 @@
 
 ;;  this is set properly in the detection period
 ;; (setq erlang-root-dir  "/home2/chunywan/d/local/lib/erlang")
-(setq inferior-erlang-machine-options
-      (list "-sname"
-            (format "%s" (emacs-pid))
-            "-remsh"
-            ;;"ejabberd@localhost"
-            ;;"tsung_controller@my"
-            ;;"msync2@localhost"
-            ;;"message@localhost"
-            ;; msync_client@localhost
-            ;;"message@localhost"
-            ;;"ejabberd@wangchunye"
-            ;; "etcd@localhost"
-            ;;"ejabberd@wangchunye"
-            ;; "xmpp@localhost"
-            ;;"xmpp@localhost"
-            "ejabberdt@zou"
-            "-hidden"
-            ))
 
 ;; TODO: this is no good way to detect distel is installed.
 (let ((distel-root (expand-file-name "~/d/working/distel")))
@@ -133,6 +116,15 @@
           (define-key erlang-shell-mode-map (read-kbd-macro (car spec)) (cadr spec))))
       (add-hook 'erlang-shell-mode-hook 'erlang-shell-mode-hook-1))))
 
+(defun my-erlang-compile ()
+  (setq inferior-erlang-machine-options
+        (list "-sname"
+              (format "%s" (emacs-pid))
+              "-remsh"
+              (format "%s" erl-nodename-cache)
+              "-hidden"))
+  (erlang-compile))
+
 (setq flycheck-erlang-include-path
       (list
        "../deps/p1_xml/include"
@@ -156,7 +148,8 @@
 (defun my-erlang-compile-on-save ()
   (if (and buffer-file-name
            (string-match "\\.erl$" buffer-file-name))
-      (erlang-compile)))
+      (if erl-nodename-cache
+          (my-erlang-compile))))
 
 (require 'company)
 (require 'company-distel)
