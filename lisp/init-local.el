@@ -94,7 +94,7 @@
 ;; (setq erlang-root-dir  "/home2/chunywan/d/local/lib/erlang")
 
 ;; TODO: this is no good way to detect distel is installed.
-(let ((distel-root (expand-file-name "~/d/working/distel")))
+(let ((distel-root (expand-file-name "~/.emacs.d/distel")))
   (when (file-exists-p distel-root)
     (let ((dist-el (expand-file-name "elisp" distel-root)))
       (add-to-list 'load-path dist-el)

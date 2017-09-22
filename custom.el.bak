@@ -1,0 +1,26 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-bright)))
+ '(custom-safe-themes
+   (quote
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" default)))
+ '(desktop-auto-save-timeout 600)
+ '(desktop-save-mode nil)
+ '(global-undo-tree-mode nil)
+ '(recentf-max-saved-items 1000)
+ '(save-interprogram-paste-before-kill t)
+ '(savehist-mode t)
+ '(scroll-bar-mode (quote right))
+ '(session-auto-store t)
+ '(session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
+ '(session-use-package t nil (session))
+ '(smex-save-file "/home/zou/.emacs.d/.smex-items"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
