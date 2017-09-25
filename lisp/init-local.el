@@ -85,6 +85,10 @@
             (cons 'i "deps/p1_xml/include")
             (cons 'i "deps/im_libs/apps/msync_proto/include")
             (cons 'i "deps/im_libs/apps/message_store/include")
+            (cons 'i "../include")
+            (cons 'i "../deps/p1_xml/include")
+            (cons 'i "../deps/im_libs/apps/msync_proto/include")
+            (cons 'i "../deps/im_libs/apps/message_store/include")
             (cons 'd (intern "'LAGER'"))
             (cons 'd (intern "'LICENSE'"))
             (list 'd (intern "'INITIAL_LICENSE_TIME'") 86400)
@@ -117,12 +121,24 @@
       (add-hook 'erlang-shell-mode-hook 'erlang-shell-mode-hook-1))))
 
 (defun my-erlang-compile ()
-  (setq inferior-erlang-machine-options
-        (list "-sname"
-              (format "%s" (emacs-pid))
-              "-remsh"
-              (format "%s" erl-nodename-cache)
-              "-hidden"))
+  (if erl-nodename-cache
+      (setq inferior-erlang-machine-options
+            (list "-sname"
+                  (format "%s_remsh" (emacs-pid))
+                  "-remsh"
+                  (format "%s" erl-nodename-cache)
+                  "-hidden"))
+    (setq inferior-erlang-machine-options
+          (list "-sname"
+                (format "%s" (emacs-pid))
+                "-pa"
+                "../deps/lager/ebin"
+                "-pa"
+                "deps/lager/ebin"
+                "-pa"
+                "../../../../../deps/lager/ebin"
+                "-hidden"))
+    )
   (erlang-compile))
 
 (setq flycheck-erlang-include-path
@@ -148,8 +164,7 @@
 (defun my-erlang-compile-on-save ()
   (if (and buffer-file-name
            (string-match "\\.erl$" buffer-file-name))
-      (if erl-nodename-cache
-          (my-erlang-compile))))
+      (my-erlang-compile)))
 
 (require 'company)
 (require 'company-distel)
