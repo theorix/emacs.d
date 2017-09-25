@@ -137,6 +137,10 @@
                 "deps/lager/ebin"
                 "-pa"
                 "../../../../../deps/lager/ebin"
+                "-pa"
+                "../deps/im_libs/apps/msync_proto/ebin"
+                "-pa"
+                "deps/im_libs/apps/msync_proto/ebin"
                 "-hidden"))
     )
   (erlang-compile))
@@ -153,6 +157,7 @@
        "../deps/lager/ebin"
        "../deps/p1_fsm/ebin"
        "../../../../lager/ebin"
+       "../deps/im_libs/apps/msync_proto/ebin"
        ))
 
 (add-hook 'erlang-mode-hook 'my-erlang-hook)
