@@ -2,16 +2,16 @@
 
 (global-set-key "\M-p"  'bs-cycle-previous)
 (global-set-key "\M-n"  'bs-cycle-next)
-(set-face-foreground 'highlight "white")
-(set-face-background 'highlight "blue")
-(set-face-foreground 'region "cyan")
-(set-face-background 'region "blue")
-(set-face-foreground 'secondary-selection "skyblue")
-(set-face-background 'secondary-selection "darkblue")
-(set-foreground-color "grey")
-(set-background-color "black")
-(set-cursor-color "gold1")
-(set-mouse-color "gold1")
+;; (set-face-foreground 'highlight "white")
+;; (set-face-background 'highlight "blue")
+;; (set-face-foreground 'region "cyan")
+;; (set-face-background 'region "blue")
+;; (set-face-foreground 'secondary-selection "skyblue")
+;; (set-face-background 'secondary-selection "darkblue")
+;; (set-foreground-color "grey")
+;; (set-background-color "black")
+;; (set-cursor-color "gold1")
+;; (set-mouse-color "gold1")
 ;;设置标题
 (setq frame-title-format
       '("- Emacs  -   [ " (buffer-file-name "%f \]"
@@ -90,8 +90,8 @@
             (cons 'i "../deps/im_libs/apps/msync_proto/include")
             (cons 'i "../deps/im_libs/apps/message_store/include")
             (cons 'd (intern "'LAGER'"))
-            (cons 'd (intern "'LICENSE'"))
-            (list 'd (intern "'INITIAL_LICENSE_TIME'") 86400)
+            ;;(cons 'd (intern "'LICENSE'"))
+            (list 'd (intern "'INITIAL_LICENSE_TIME'") 8640000)
             'debug_info))
 
 ;;  this is set properly in the detection period
@@ -158,6 +158,7 @@
        "../deps/p1_fsm/ebin"
        "../../../../lager/ebin"
        "../deps/im_libs/apps/msync_proto/ebin"
+       "../deps/im_libs/apps/message_store/ebin"
        ))
 
 (add-hook 'erlang-mode-hook 'my-erlang-hook)
