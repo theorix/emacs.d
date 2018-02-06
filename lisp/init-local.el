@@ -87,8 +87,10 @@
             (cons 'i "deps/im_libs/apps/message_store/include")
             (cons 'i "../include")
             (cons 'i "../deps/p1_xml/include")
+            (cons 'i "../../../../../deps/p1_xml/include")
             (cons 'i "../deps/im_libs/apps/msync_proto/include")
             (cons 'i "../deps/im_libs/apps/message_store/include")
+            (cons 'i "../../../apps/msync_proto/include")
             (cons 'd (intern "'LAGER'"))
             ;;(cons 'd (intern "'LICENSE'"))
             (list 'd (intern "'INITIAL_LICENSE_TIME'") 8640000)
@@ -138,6 +140,8 @@
                 "-pa"
                 "../../../../../deps/lager/ebin"
                 "-pa"
+                "../../../deps/lager/ebin"
+                "-pa"
                 "../deps/im_libs/apps/msync_proto/ebin"
                 "-pa"
                 "deps/im_libs/apps/msync_proto/ebin"
@@ -149,6 +153,7 @@
       (list
        "../deps/p1_xml/include"
        "../include"
+       "../../msync_proto/include"
        "../deps/im_libs/apps/msync_proto/include"
        "../deps/im_libs/apps/message_store/include"))
 
