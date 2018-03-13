@@ -91,6 +91,7 @@
             (cons 'i "../deps/im_libs/apps/msync_proto/include")
             (cons 'i "../deps/im_libs/apps/message_store/include")
             (cons 'i "../../../apps/msync_proto/include")
+            (cons 'i "../../../../p1_xml/include")
             (cons 'd (intern "'LAGER'"))
             ;;(cons 'd (intern "'LICENSE'"))
             (list 'd (intern "'INITIAL_LICENSE_TIME'") 8640000)
@@ -152,6 +153,7 @@
 (setq flycheck-erlang-include-path
       (list
        "../deps/p1_xml/include"
+       "../../../../p1_xml/include"
        "../include"
        "../../msync_proto/include"
        "../deps/im_libs/apps/msync_proto/include"
@@ -181,6 +183,15 @@
 (require 'company-distel)
 (add-to-list 'company-backends 'company-distel)
 
+;; (require 'epic)
+;; (define-key global-map [(control ?:)] 'epic-helm)
+;; (define-key mew-summary-mode-map "r" 'epic-mew-create-note)
+;; (define-key mew-summary-mode-map "e" 'epic-mew-forward-to-evernote)
+;; (setq epic-evernote-mail-address "zoujinhai@yeah.net")
+
+
+(global-unset-key (kbd "C-SPC"))
+(global-set-key (kbd "M-SPC") 'set-mark-command)
 
 (message "init local finish")
 (provide 'init-local)
